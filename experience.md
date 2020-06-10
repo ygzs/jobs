@@ -76,10 +76,26 @@
 
 4.  vuex
 
-
-
 <pre>
 转载于： https://ask.dcloud.net.cn/article/35021
         https://www.cnblogs.com/aishangliming/p/10959497.html
 </pre>
+
+
+二  the second day
+
+1.  <pre>Math.floor(x) 返回小于等于 x 的最大整数</pre>
+
+2.  <pre>标签的 disabled 属性规定应该禁用 input 元素</pre>
+
+3.  <pre>
+    @blur 是当元素失去焦点时所触发的事件
+    失去焦点就是指当前元素里没有鼠标的光标.
+    </pre>
+
+4.  uni-app两种提示框
+    <pre>
+    uni.showToast(OBJECT)
+    uni.showModal(OBJECT)
+    </pre>
 
