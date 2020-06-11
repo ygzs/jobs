@@ -99,3 +99,14 @@
     uni.showModal(OBJECT)
     </pre>
 
+
+三 the forth day
+
+1.  input 标签
+    <pre>
+    checked 属性规定在页面加载时应该被预先选定的 input 元素。
+    checked 属性 与  input type="checkbox"  或  input type="radio" 配合使用。
+    checked 属性也可以在页面加载后，通过 JavaScript 代码进行设置。
+    </pre>
+
+2.  
