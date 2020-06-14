@@ -109,4 +109,9 @@
     checked 属性也可以在页面加载后，通过 JavaScript 代码进行设置。
     </pre>
 
-2.  
+
+四 The fifth day
+
+1.  <pre>
+    在每次登录成功后获取当前时间戳 currentTime，（Math.round(new Date() / 1000) ），存储到localStorage中，同时从后台返回一个到期时间 endTime，当 currentTime < endTime 时，用户无需重复登录
+    </pre>
