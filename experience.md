@@ -115,3 +115,21 @@
 1.  <pre>
     在每次登录成功后获取当前时间戳 currentTime，（Math.round(new Date() / 1000) ），存储到localStorage中，同时从后台返回一个到期时间 endTime，当 currentTime < endTime 时，用户无需重复登录
     </pre>
+
+
+五 2020/06/15
+
+1.  uniapp自定义导航栏返回按钮及点击事件 
+    ```javascript
+    onBackPress(options) {
+        if (options.from === 'navigateBack') {
+        return false;
+        }
+        uni.reLaunch({
+            url: 'index'
+        });
+        return true;
+    },
+    // 返回上一页
+    ```
+2.  uni-app 上传图片可以不用设置 header
