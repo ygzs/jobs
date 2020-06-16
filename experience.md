@@ -133,3 +133,12 @@
     // 返回上一页
     ```
 2.  uni-app 上传图片可以不用设置 header
+
+
+六 2020/06/16
+
+1.  [object Object]
+    <pre>
+    默认情况下，toString()方法被每个Object对象继承。如果此方法在自定义对象中未被覆盖，toString()返回 "[object type]"，其中type是对象的类型。
+    可以先用 JSON.stringify( ) 转换一下
+    </pre>
