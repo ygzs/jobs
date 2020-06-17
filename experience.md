@@ -142,3 +142,21 @@
     默认情况下，toString()方法被每个Object对象继承。如果此方法在自定义对象中未被覆盖，toString()返回 "[object type]"，其中type是对象的类型。
     可以先用 JSON.stringify( ) 转换一下
     </pre>
+
+
+七 2020/06/17
+
+1.  html5页面简单判断当前有无网络
+    ```javascript
+    if (navigator.onLine) { 
+        alert('online'); 
+    } else { 
+        alert('offline'); 
+    }
+
+    window.addEventListener('offline', function(e) {alert('offline');}) 
+    window.addEventListener('online', function(e) {alert('online``');}) 
+    ```
+    参考：https://blog.csdn.net/junoohoome/article/details/51850134
+
+    
