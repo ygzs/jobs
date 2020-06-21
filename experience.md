@@ -160,3 +160,10 @@
     参考：https://blog.csdn.net/junoohoome/article/details/51850134
 
     
+八 2020/06/21
+
+1.  如何让 button 标签中的文字居中
+    给文字设置line-height，等于button高度。
+
+2.  flex-wrap: wrap
+    让弹性盒元素在必要的时候拆行。
