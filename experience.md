@@ -167,3 +167,62 @@
 
 2.  flex-wrap: wrap
     让弹性盒元素在必要的时候拆行。
+
+
+九 2020/06/22
+
+1.  一般在注册页面，在 form 表单的其中一行有
+    ```html
+    <form>
+        <div class="row">
+            <span>用户名</span>
+            <input type="text" placeholder="请输入用户名">
+        </div>
+        <div class="row">
+            <span>手机号</span>
+            <input type="number" placeholder="请输入手机号">
+            <p>获取验证码</p>
+        </div>
+    </form>
+    ```
+    ```css
+    .row{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .row > span{
+        width: 4em;
+    }
+    .row > input{
+        flex-grow: 1;
+    }
+    .row > p{
+        display: inline-block;
+    }
+    .row:nth-child(2) > input{
+        width: 1px;
+    }
+    ```
+
+2.  tab 切换
+    ```html
+     <div id="app">
+        <ul class="tab-tit">
+            <li v-for="(title,index) in tabTitle" @click="cur=index" :class="{active:cur==index}">{{title}}</li>
+        </ul>
+        <div class="tab-content">
+            <div v-for="(m,index) in tabMain" v-show="cur==index">{{m}}</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                tabTitle: ['标题一', '标题二', '标题三', '标题四'],
+                tabMain: ['内容一', '内容二', '内容三', '内容四'],
+                cur: 0 //默认选中第一个tab
+            }
+        })
+    </script>
+    ```
