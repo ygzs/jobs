@@ -226,3 +226,7 @@
         })
     </script>
     ```
+
+十 2020/06/23
+
+1.  在 hbuilderx 打包为 h5 后，可以用外壳打包为 apk 或者 ipa ，ipa 为越狱版，然后用 appcake 安装到没有越狱的 iPhone 上
