@@ -230,3 +230,45 @@
 十 2020/06/23
 
 1.  在 hbuilderx 打包为 h5 后，可以用外壳打包为 apk 或者 ipa ，ipa 为越狱版，然后用 appcake 安装到没有越狱的 iPhone 上
+
+
+十一 2020/06/28
+
+1.  ```json
+    "path": "pages/index/index",
+    "style": {
+        "navigationStyle":"custom",
+        "app-plus":{
+            "titleView":false  
+        }  
+    }
+    ```
+    设置单页面去除原生导航栏
+    参考：https://www.cnblogs.com/ruruo/p/11544630.html
+    参考：https://www.cnblogs.com/li-sir/p/12155267.html
+
+2.  ```javascript
+    created(){
+        if(this.information.type === 2){
+            uni.setTabBarItem({
+                index: 1,
+                text: '简历',
+            })
+        }
+    },
+    ```
+    在页面中动态设置tabBar
+
+3.  <pre>
+    created  模板还没有被渲染成html，这时候通过id什么的去查找页面元素是找不到的
+
+    mounted  挂载完成以后也就是模板渲染完成以后才会被调用。
+
+    computed是属性调用，而methods是函数调用
+    computed带有缓存功能，而methods不是
+
+    computed定义的方法我们是以属性访问的形式调用的，{{computedTest}}
+    但是methods定义的方法，我们必须要加上()来调用，如{{methodTest()}}
+
+    页面加载完成后执行  onload
+    </pre>
