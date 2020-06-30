@@ -272,3 +272,51 @@
 
     页面加载完成后执行  onload
     </pre>
+
+
+十二 2020/06/30
+
+1.  vue watch监听对象及对应值的变化
+    ```javascript
+    var vm=new Vue({
+        data:{
+            a:1,
+            b:{
+                c:1
+            }
+        },
+        watch:{
+            a(val, oldVal){//普通的watch监听
+                console.log("a: "+val, oldVal);
+            },
+            b:{//深度监听，可监听到对象、数组的变化
+                handler(val, oldVal){
+                    console.log("b.c: "+val.c, oldVal.c);//但是这两个值打印出来却都是一样的
+                },
+                deep:true
+            }
+        }
+        })
+    vm.a=2
+    vm.b.c=2
+    ```
+    参考：https://blog.csdn.net/qq_17757973/article/details/78721553
+
+2.  JS如何判断一个数组里面的所有值相等（只针对数字）
+    <pre>
+    判断数组中最大值和最小值是否相等
+    简单数组
+    const arr = [1,2,3,4,5,6,7]
+    Math.max.apply(null, arr) === Math.min.apply(null, arr)
+    对象数组，其实就是把对象数组转换成简单数组
+    const obj = [{id:1,price:1.5},{id:2,price:1.5}]
+    const arr = obj.map(o=>o.price)
+    Math.max.apply(null, arr) === Math.min.apply(null, arr)
+
+    参考：https://blog.csdn.net/thorLei/article/details/83148966
+    </pre>
+
+3.  获取地理位置的信息
+    ```javascript
+    navigator.geolocation.getCurrentPosition(success, error, options)
+    ```
