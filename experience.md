@@ -320,3 +320,49 @@
     ```javascript
     navigator.geolocation.getCurrentPosition(success, error, options)
     ```
+
+十三 2020/07/01
+
+1.  <pre>
+    需要使用自定义模板的场景，通常有以下几种情况：
+        调整页面 head 中的 meta 配置 
+        补充 SEO 相关的一些配置（仅首页） 
+        加入百度统计等三方js 
+        
+        使用自定义模板时，
+        1. 工程根目录下新建一个html文件；
+        2. 复制下面的基本模板内容，到这个html文件，在此基础上修改meta和引入js；
+        3. 在 manifest.json->h5->template 节点中关联这个html文件的路径。
+    </pre>
+
+2.  uni-app 如何在当前页调上个页面的方法
+    ```javascript
+    var pages = getCurrentPages();//当前页
+    var prevPage = pages[pages.length - 2];//上个页面
+    // #ifdef H5
+    beforePage.submitAct()
+    // #endif
+    // #ifndef H5
+    beforePage.$vm.submitAct()
+    // #endif
+    ```
+
+3.  子页面返回父页面，父页面刷新
+    ```javascript
+    //子页面
+    let pages = getCurrentPages()
+    let currPage = pages[pages.length - 1]
+    let prevPage = pages[pages.length - 2]
+    //prevPage.onLoad()
+    prevPage._data.isDoRefresh = true
+    uni.navigateBack({
+        delta: 1,
+    })
+
+    //父页面
+    if(this.isDoRefresh === true){
+        //console.log(2)
+        this.isDoRefresh = false
+        this.checkInfo()
+    }     
+    ```
