@@ -321,7 +321,7 @@
     navigator.geolocation.getCurrentPosition(success, error, options)
     ```
 
-十三 2020/07/01
+十三  2020/07/01
 
 1.  <pre>
     需要使用自定义模板的场景，通常有以下几种情况：
@@ -365,4 +365,24 @@
         this.isDoRefresh = false
         this.checkInfo()
     }     
+    ```
+
+十四 2020/07/02
+
+1.  取消原生导航栏的默认返回按钮：
+    ```javascript
+    mounted() {
+        document.getElementsByClassName('uni-page-head-hd')[0].firstChild.style.display = 'none'
+    },
+    ```
+
+2.  input 设置高度要先设置 background-color 再设置 height
+
+3.  页面间通讯
+    ```javascript
+    var Event=new Vue()
+    Event.$emit('update',{msg:'页面更新'})
+    Event.$on('update',(data) => {
+        console.log(data.msg)
+    })
     ```
