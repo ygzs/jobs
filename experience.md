@@ -386,3 +386,9 @@
         console.log(data.msg)
     })
     ```
+
+十五 2020/07/04
+
+1.  <pre>
+    小程序 v-show 是通过伪类 view[hidden]{display:none} 实现，用户写的 display: flex 权重较高，使之失效。可以改成 v-if。
+    </pre>
