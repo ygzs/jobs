@@ -392,3 +392,43 @@
 1.  <pre>
     小程序 v-show 是通过伪类 view[hidden]{display:none} 实现，用户写的 display: flex 权重较高，使之失效。可以改成 v-if。
     </pre>
+
+十六 2020/07/06
+
+1.  使用 $.emit 和 $.on 传递参数，第一次 $.on 不执行
+    ```javascript
+    //在 main.js 中
+    Vue.prototype.$EventBus = new Vue({
+        data () {
+            return {
+                content: '',
+            }
+        },
+        created(){
+            this.$once('update', (data)=>{
+                this.content = data
+            })
+        }
+    })
+
+    //在数据发出页面
+    this.$EventBus.$emit('update','xxxx');
+    
+    //在数据接收页面
+    this.updateContent = this.$EventBus.content
+    ```
+
+2.  微信小程序中点击事件传递参数
+    <pre>
+    首先 @click 绑定点击事件，
+    在标签中利用 data-xxx  来定义你要传入的参数，，
+    然后事件中传入 event 用 event.currentTarget.dataset.xxx 来取你传入的值
+    </pre>
+    ```html
+    <li v-for='(item,index) in news' :key='index' @click='VXreadNews' :data-s='item'>
+    ```
+    ```javascript
+    VXreadNews(e){
+        let content = e.currentTarget.dataset.s
+    }
+    ```
