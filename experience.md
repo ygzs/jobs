@@ -432,3 +432,13 @@
         let content = e.currentTarget.dataset.s
     }
     ```
+
+十七 2020/07/08
+
+1.  placeholder 换行
+    ```
+    &#13; 表示回车
+    &#10;表示换行
+    ```
+
+2.  form 中 @submit ，必须有 name 才能获取相应的值
