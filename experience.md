@@ -442,3 +442,33 @@
     ```
 
 2.  form 中 @submit ，必须有 name 才能获取相应的值
+
+十八 2020/07/09
+
+1.  uni-app 原生导航栏返回事件
+    ```javascript
+    onBackPress(e) {
+        if (e.from === 'navigateBack') {  
+            return false  
+        }  
+        this.back()
+        return true
+    },
+    methods: {
+        back(){
+            uni.navigateBack({  
+                delta: 2  
+            })
+        }
+    }
+    ```
+
+2.  外部 div 完全包裹住内部 img 并使图片居中
+    ```css
+    .wapper{
+        text-align: center;
+    }
+    .wapper > img{
+        vertical-align: top;
+    }
+    ```
