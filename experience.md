@@ -472,3 +472,14 @@
         vertical-align: top;
     }
     ```
+
+十九 2020//07/12
+
+1.  如何让div中的文字只显示一行，多余的文字隐藏并加上省略号
+    ```css
+    div{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    ```
