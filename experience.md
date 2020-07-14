@@ -539,3 +539,46 @@
         </ul>
     </div>
     ```
+
+二十一 2020/07/14
+
+1.  uni-app 聊天界面
+    ```html
+    <scroll-view id="scrollview" scroll-y="true" :scroll-top="scrollTop"      style="height: 100%;">
+        <div class="uni-chatMsgCnt" id="msglistview">
+            <div class="msgitem">xxx</div>
+            <div class="msgitem">xxx</div>
+            <div class="msgitem">xxx</div>
+        </div>
+    </scroll-view>
+    ```
+    ```javascript
+    export default {
+        data() {
+            return {
+                scrollTop: 0,
+            }
+        },
+        mounted() {
+            this.scrollToBottom()
+        },
+        updated() {
+            this.scrollToBottom()
+        },
+        methods: {
+            // 滚动至聊天底部
+            scrollToBottom(t) {
+                let that = this
+                let query = uni.createSelectorQuery()
+                query.select('#scrollview').boundingClientRect()
+                query.select('#msglistview').boundingClientRect()
+                query.exec((res) => {
+                    // console.log(res)
+                    if(res[1].height > res[0].height){
+                        that.scrollTop = res[1].height - res[0].height
+                    }
+                })
+            },
+        }
+    }
+    ```
