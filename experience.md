@@ -605,3 +605,43 @@
     }  
     ```
 3.  参考：https://www.cnblogs.com/chenrenshui/p/6009152.html
+
+二十三 2020/07/18
+
+1.  computed 属性
+    ```html
+    <div class="hello">
+        <div id="example">
+            <p>firstName值: {{firstName}}</p>
+            <p>fullName值: {{fullName}}</p>
+        </div>
+        <button @click="ClickCeshi">点击改变fullName的值</button>
+    </div>
+    ```
+    ```javascript
+    export default{
+       data(){
+            return {
+                firstName: 'Foo'
+            }
+        },
+        methods:{
+            ClickCeshi () {
+                this.fullName = 'fullName的新值'
+            }
+        },
+        computed:{
+            fullName:{
+                get: function () {
+                    console.log('调用了getter属性')
+                    return '***' + this.firstName + '***'
+                },
+                set: function (newValue) {
+                    console.log('调用了settter属性')
+                    console.log(newValue)
+                    this.firstName = newValue
+                }
+            }
+        }
+    }
+    ```
