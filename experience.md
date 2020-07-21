@@ -652,3 +652,70 @@
     ```javascript
     this.text = this.text.replace(/1[3456789]\d{9}/,'***********')
     ```
+
+二十五 2020/07/21
+
+1.  vue-router判断页面未登录时，自动跳转到登录页
+    ```javascript
+    const routers = [
+        {
+            path: '/',
+            component: App,
+            children: [
+                {
+                    path: '/login', 
+                    component: Login,
+                    meta: {
+                        title: '登录'
+                    }
+                },
+                { 
+                    path: '/home', 
+                    component: Home,
+                    meta: {
+                        title: '首页',
+                        requireAuth: true
+                    }
+                }
+            ]
+        }
+    ]
+    export default routers
+    ```
+    ```javascript
+    router.beforeEach((to, from, next) => {
+        /* 页面title */
+        if (to.meta.title) {
+            document.title = to.meta.title
+        }
+        /* 判断该路由是否需要登录权限 */
+        if (to.matched.some(record => record.meta.requireAuth)) {
+            //是否登录
+            axios.post('/home/user/isLogin')
+                .then(function (response) {
+                    if (response.data.code == 0) {
+                        //未登录
+                        if (response.data.data.online == 0) {
+                            next({
+                                path: '/login',
+                            })
+                        } else {
+                            //已登录
+                        next()
+                        }
+                    }
+                })
+                .catch(function (error) {
+                // Toast(error.data.msg);
+            });
+        }
+        next();
+    })
+    ```
+
+2.  <pre>
+    1.定义路由的时候配置meta属性,requireAuth用来标记跳转的这个路由是否需要检测登录下面的两个页面，登录页不需要检测，首页需要检测
+    2.main.js
+    返回遍历的某个路由对象，我们定义为record，检测这个对象是否拥有meta这个对象，如果有meta这个对象，检测meta对象是不是有requireAuth这个属性且为true.检测到需要登录权限后，我的做法是请求接口判断用户是否登录.如果未登录，跳转到登录页面；如果已经登录，确保要调用next()方法，否则钩子就不会被resolved.
+    </pre>
+    参考：https://www.cnblogs.com/liuqianrong/p/9518741.html
