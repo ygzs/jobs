@@ -719,3 +719,7 @@
     返回遍历的某个路由对象，我们定义为record，检测这个对象是否拥有meta这个对象，如果有meta这个对象，检测meta对象是不是有requireAuth这个属性且为true.检测到需要登录权限后，我的做法是请求接口判断用户是否登录.如果未登录，跳转到登录页面；如果已经登录，确保要调用next()方法，否则钩子就不会被resolved.
     </pre>
     参考：https://www.cnblogs.com/liuqianrong/p/9518741.html
+
+二十六 2020/07/22
+
+1.  map() forEach() 无法中断（break，continue） 可以用 for of
