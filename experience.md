@@ -723,3 +723,21 @@
 二十六 2020/07/22
 
 1.  map() forEach() 无法中断（break，continue） 可以用 for of
+
+二十六 2020/07/23
+
+1.  uni-app 退出应用
+    ```javascript
+    //退出app
+    // #ifdef APP-PLUS
+	if (plus.os.name.toLowerCase() === 'android') {
+		plus.runtime.quit();
+	}
+	else{ 
+		const threadClass = plus.ios.importClass("NSThread");
+		const mainThread = plus.ios.invoke(threadClass, "mainThread");
+		plus.ios.invoke(mainThread, "exit");
+	}
+	// #endif
+    ```
+    参考：https://blog.csdn.net/qyx189573/article/details/105215847
