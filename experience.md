@@ -731,13 +731,55 @@
     //退出app
     // #ifdef APP-PLUS
 	if (plus.os.name.toLowerCase() === 'android') {
-		plus.runtime.quit();
+		plus.runtime.quit()
 	}
 	else{ 
-		const threadClass = plus.ios.importClass("NSThread");
-		const mainThread = plus.ios.invoke(threadClass, "mainThread");
-		plus.ios.invoke(mainThread, "exit");
+		const threadClass = plus.ios.importClass("NSThread")
+		const mainThread = plus.ios.invoke(threadClass, "mainThread")
+		plus.ios.invoke(mainThread, "exit")
 	}
 	// #endif
     ```
     参考：https://blog.csdn.net/qyx189573/article/details/105215847
+
+二十七 2020/07/28
+
+1.  动态修改 uni-app 原生导航栏按钮
+    ```javascript
+    onNavigationBarButtonTap(e){
+        if(e.index === 0){
+            // #ifdef APP-PLUS  
+            const currentWebview = this.$mp.page.$getAppWebview()
+            currentWebview.setTitleNViewButtonStyle(e.index, {  //h5端会报错
+                text: "完成"
+            }) 
+		    // #endif
+		}
+    }
+    ```
+
+2.  PNG 格式小图标的 CSS 任意颜色赋色技术
+    ```html
+    <p><strong>原始图标</strong></p>
+    <i class="icon icon-del"></i>
+    <p><strong>可以变色的图标</strong></p>
+    <i class="icon"><i class="icon icon-del"></i></i>
+    ```
+    ```css
+    .icon {
+        display: inline-block;
+        width: 20px; height: 20px;
+        overflow: hidden;
+    }
+    .icon-del {
+        background: url(delete.png) no-repeat center;
+    }
+    .icon > .icon {
+        position: relative;
+        left: -20px;
+        border-right: 20px solid transparent;
+       -webkit-filter: drop-shadow(20px 0);
+        filter: drop-shadow(20px 0);
+    }
+    ```
+    参考：https://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/
