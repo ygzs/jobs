@@ -784,14 +784,21 @@
     ```
     参考：https://www.zhangxinxu.com/wordpress/2016/06/png-icon-change-color-by-css/
 
-    二十八 2020/08/01
+二十八 2020/08/01
 
-    1.  <pre>
+1.  <pre>
         uni-app 地图组件
         参考：https://blog.csdn.net/weixin_43968043/article/details/86642657
-        </pre>
+    </pre>
     
-    2.  <pre>
+2.  <pre>
         uni.getLocation无法触发，不管用的解决办法
         参考：https://blog.csdn.net/qq_38774121/article/details/103997218
-        </pre>
+    </pre>
+
+二十九 2020/08/04
+
+1.  <pre>
+        uni-app 上传图片插件
+        参考：https://ext.dcloud.net.cn/plugin?id=404
+    </pre>
