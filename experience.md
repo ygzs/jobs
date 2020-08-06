@@ -802,3 +802,13 @@
         uni-app 上传图片插件
         参考：https://ext.dcloud.net.cn/plugin?id=404
     </pre>
+
+三十 2020/08/06
+
+1.  判断一个对象是否为空对象
+    ```javascript
+    if(Object.keys(Obj).length > 0){
+        console.log('非空对象')
+    }
+    ```
+    参考：https://www.cnblogs.com/shenpeng/p/10219500.html
