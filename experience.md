@@ -812,3 +812,8 @@
     }
     ```
     参考：https://www.cnblogs.com/shenpeng/p/10219500.html
+
+三十一 2020/08/07
+
+1.  uni-app 聊天界面
+    参考：https://blog.csdn.net/chen_start02/article/details/98615507
