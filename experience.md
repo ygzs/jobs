@@ -318,7 +318,27 @@
 
 3.  获取地理位置的信息
     ```javascript
-    navigator.geolocation.getCurrentPosition(success, error, options)
+    //navigator.geolocation.getCurrentPosition(success, error, options)
+    navigator.geolocation.getCurrentPosition( // 该函数有如下三个参数
+        function(pos){ // 如果成果则执行该回调函数
+            alert(
+                '  经度：' + pos.coords.latitude +
+                '  纬度：' + pos.coords.longitude +
+                '  高度：' + pos.coords.altitude +
+                '  精确度(经纬)：' + pos.coords.accuracy +
+                '  精确度(高度)：' + pos.coords.altitudeAccuracy +
+                '  速度：' + pos.coords.speed
+            );
+        }, 
+        function(err){ // 如果失败则执行该回调函数
+            alert(err.message);
+        }, 
+        { // 附带参数
+            enableHighAccuracy: false, // 提高精度(耗费资源)
+            timeout: 3000, // 超过timeout则调用失败的回调函数
+            maximumAge: 1000 // 获取到的地理信息的有效期，超过有效期则重新获取一次位置信息
+        }
+    );
     ```
 
 十三  2020/07/01
@@ -817,3 +837,36 @@
 
 1.  uni-app 聊天界面
     参考：https://blog.csdn.net/chen_start02/article/details/98615507
+
+三十二 2020/08/15
+
+1.  解决 BMap is not defined
+    新建一个map.js
+    ```javascript
+    export function MP(ak) {  
+        return new Promise(function (resolve, reject) {  
+            window.onload = function () {  
+                resolve(BMap)  
+            }     
+            var script = document.createElement("script");  
+            script.type = "text/javascript";  
+            script.src = "http://api.map.baidu.com/api?v=2.0&ak="+ak+"&callback=init";  
+            script.onerror = reject;  
+            document.head.appendChild(script);  
+        })  
+    }  
+    ```
+    在你的百度地图页面中调用(ak 就是你的密钥)
+    ```javascript
+    import {MP} from './map.js' 
+    ```
+    ```javascript
+    mounted(){  
+        this.$nextTick(function(){  
+            var _this = this;  
+            MP(_this.ak).then(BMap => {  
+                //在此调用api  
+            })
+        })
+    } 
+    ```
